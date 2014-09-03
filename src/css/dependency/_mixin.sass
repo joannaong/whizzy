@@ -1,0 +1,93 @@
+// -----------------
+// MIXINS
+// -----------------
+
+/*
+ * Font face - add this globally
+ *
+ * @include font-face("dinpromedium", "dinpro-medium-webfont")
+ *
+ */
+@mixin font-face($_familyname, $_filename, $_weight: normal)
+	@font-face
+		font-family: #{$_familyname}
+		src: url("#{$path-font}#{$_filename}.eot"), url("#{$path-font}#{$_filename}.eot?#iefix") format("embedded-opentype"), url("#{$path-font}#{$_filename}.woff") format("woff"), url("#{$path-font}#{$_filename}.ttf") format("truetype"), url("#{$path-font}#{$_filename}.svg##{$_familyname}") format("svg")
+		font-weight: $_weight
+
+/*
+ * Center center
+ *
+ * @include center-center
+ *
+ */
+@mixin center-center
+	position: absolute
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%)
+	-webkit-transform: translate(-50%, -50%)
+	-ms-transform: translate(-50%, -50%)
+
+/*
+ * Animations & Keyframes
+ *
+ * @include keyframes(slide-down) {
+ *   0% { opacity: 1; }
+ *   90% { opacity: 0; }
+ * }
+ *
+ * .element {
+ *   @include animation('slide-down 5s 3');
+ * }
+ *
+ */
+@mixin keyframes($animation-name)
+	@-webkit-keyframes $animation-name
+		@content
+	@-moz-keyframes $animation-name
+		@content  
+	@-ms-keyframes $animation-name
+		@content
+	@-o-keyframes $animation-name
+		@content  
+	@keyframes $animation-name
+		@content
+
+@mixin animation($str)
+	-webkit-animation: #{$str}
+	-moz-animation: #{$str}
+	-ms-animation: #{$str}
+	-o-animation: #{$str}
+	animation: #{$str}
+
+/*
+ * Transitions
+ * @include transition(color .3s ease);
+ *
+ */
+@mixin transition($args)
+	-webkit-transition: $args
+	-moz-transition: $args
+	-ms-transition: $args
+	-o-transition: $args
+	transition: $args
+
+/*
+ * Cross browser opacity
+ * @include opacity(0.8);
+ *
+ */
+@mixin opacity($opacity)
+	opacity: $opacity
+	$opacity-ie: $opacity * 100
+	filter: alpha(opacity=$opacity-ie)
+
+/*
+ * CSS transform
+ * @include transform(translateX(50%));
+ *
+ */
+@mixin transform($args)
+	-webkit-transform: $args
+	-ms-transform: $args
+	transform: $args
