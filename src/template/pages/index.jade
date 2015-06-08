@@ -8,8 +8,8 @@ html
 
 		//- CSS sources
 		link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,700', rel='stylesheet', type='text/css')
-		link(rel="stylesheet", href="http://lab.hakim.se/reveal-js/css/reveal.css")
-		link(rel="stylesheet", href="http://lab.hakim.se/reveal-js/css/theme/default.css", id="theme")
+		link(rel="stylesheet", href="asset/reveal.css")
+		link(rel="stylesheet", href="asset/default.css", id="theme")
 		link(rel="stylesheet", href="css/main.css", type="text/css")
 
 	body(data-js-class=jsClass)
@@ -17,31 +17,8 @@ html
 
 		.reveal
 			.slides
-				section
-					h1 WHIZZY
-				
-				section
-					h2 Best Asian.
-				section(data-background="../asset/people/Mike%20Phan.jpg", data-transition="zoom")
-					h2 Mike Phan
-				
-				section
-					h2 Best Asian 2.
-				section(data-background="../asset/people/Ashley%20Choi.jpg", data-transition="zoom")
-					h2 Ashley Choi 2
 
-				section
-					h2 Best Asian 3.
-				section(data-background="../asset/people/Ashley%20Choi.jpg", data-transition="zoom")
-					h2 Ashley Choi 3
-
-		//- #wrapper
-		//- 	#whizzy.hideme
-		//- 	#awards
-		//- 		.name
-		//- 		.categ
-		
-		script(src="js/libfoot-min.js")
+		script(src="http://code.jquery.com/jquery-2.1.4.min.js")
 		script(src="http://lab.hakim.se/reveal-js/lib/js/head.min.js")
 		script(src="http://lab.hakim.se/reveal-js/js/reveal.js")
 		script(src="js/main-min.js")

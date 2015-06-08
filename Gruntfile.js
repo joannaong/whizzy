@@ -19,12 +19,6 @@ module.exports = function(grunt) {
 
   // An array list of all your js files to be minified in compiling order
   var scripts = {
-    // lib_head:[
-    //   'bower_components/modernizr/modernizr.js'
-    // ],
-    lib_foot:[
-      'bower_components/jquery/dist/jquery.js'
-    ],
     app:[
       'src/js/**/*.js'
     ]
@@ -78,8 +72,8 @@ module.exports = function(grunt) {
           sourceMap: true
         },
         files: {
-          '<%= environment.dest %>js/main-min.js': '<%= scripts.app %>',
-          '<%= environment.dest %>js/libfoot-min.js': '<%= scripts.lib_foot %>'
+          '<%= environment.dest %>js/main-min.js': '<%= scripts.app %>'
+          // '<%= environment.dest %>js/libfoot-min.js': '<%= scripts.lib_foot %>'
           // '<%= environment.dest %>js/libhead-min.js': '<%= scripts.lib_head %>'
         }
       }

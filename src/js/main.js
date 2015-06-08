@@ -8,7 +8,7 @@ var whizzy = {
 	init: function() {
 		var self = this;
 
-		if (random) {
+		if (this.random) {
 			this.getData();
 		} else {
 			this.buildHandler();
