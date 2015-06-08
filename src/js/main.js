@@ -43,7 +43,7 @@ var whizzy = {
 	buildHandler: function() {
 		var self = this;
 		var html = '';
-		var peopleURL = "http://whizzy.thesecretlocation.net.s3-website-us-west-2.amazonaws.com/asset/people/";
+		var peopleURL = "http://whizzy.thesecretlocation.net.s3-website-us-west-2.amazonaws.com/2014/asset/people/";
 
 		html += '<section data-background="asset/mr_wizzy.png">';
 		html +=   '<img id="logo" src="asset/logo.png">';
@@ -52,8 +52,6 @@ var whizzy = {
 		html += '</section>';
 
 		$.each(self.data, function(i, item) {
-			// console.log(item);
-			// console.log(encodeURIComponent(item.name));
 			var encodedName = encodeURIComponent(item.name);
 			while(encodedName.indexOf('%20')!=-1)
 				encodedName = encodedName.replace('%20','-').replace("'","-");
