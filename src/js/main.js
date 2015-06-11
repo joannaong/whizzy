@@ -66,7 +66,7 @@ var whizzy = {
 			while(encodedName.indexOf('%20')!=-1)
 				encodedName = encodedName.replace('%20','-').replace("'","-");
 
-			if(i == 20){
+			if(i == 35){
 				html += '<section>';
 				html += '<video controls><source src="asset/DanceMan.mp4" type="video/mp4"></video>'
 				html += '</section>';
@@ -110,7 +110,7 @@ var whizzy = {
 		// push data into name and desc array
 		$.each(self.whizzyData, function(i, item){
 			self.arrayName.push(item["title"]["$t"]);
-			self.arrayCateg.push(item["content"]["$t"].split(",")[1].replace("awarddescription: ",""));
+			self.arrayCateg.push(item["content"]["$t"].replace("awarddescription: ",""));
 		});
 
 		while(self.arrayName.length){
