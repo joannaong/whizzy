@@ -5,29 +5,30 @@ var whizzy = {
 	data: [],
 
 	// if true, will grab from dynamic json
-	dynamic: true,
+	dynamic: false,
+	year: new Date().getFullYear(),
 
 	// json files
 	json: {
-		y2014: {
-			dynamic: "https://spreadsheets.google.com/feeds/list/1_syR_zHNkECXocpZzKtpUNx2oAIEZ53BUapjl7mHbKI/od6/public/basic?hl=en_US&alt=json",
-			static: "asset/2014/data2014.json"
-		} ,
-		y2015: {
-			dynamic: "https://spreadsheets.google.com/feeds/list/1_syR_zHNkECXocpZzKtpUNx2oAIEZ53BUapjl7mHbKI/od6/public/basic?hl=en_US&alt=json",
-			static: "asset/2014/data2015.json"
-		}
+		2014: "https://spreadsheets.google.com/feeds/list/1_syR_zHNkECXocpZzKtpUNx2oAIEZ53BUapjl7mHbKI/od6/public/basic?hl=en_US&alt=json",
+		2015: "https://spreadsheets.google.com/feeds/list/1_syR_zHNkECXocpZzKtpUNx2oAIEZ53BUapjl7mHbKI/od6/public/basic?hl=en_US&alt=json"
 	},
 
 	init: function() {
 		var self = this;
-		this.getData();
+
+		if (self.dynamic) {
+			this.getData();
+		} else {
+			$.getJSON("asset/"+self.year+"/data.json").done(function(data) {
+				self.data = data;
+				self.buildHandler();
+			});
+		}
 	},
 
 	getData: function() {
 		var self = this;
-		var year = "y"+new Date().getFullYear();
-		var state = self.dynamic ? "dynamic" : "static";
 
 		// stored in localstorage, if ever we need to refresh
 		if(localStorage.getItem('data')){
@@ -39,7 +40,7 @@ var whizzy = {
 
 		// get data
 		$.ajax({
-		  url: self.json[year][state],
+		  url: self.json[self.year],
 		  xhrFields: { withCredentials: true },
 			crossDomain: true,
 			dataType: 'jsonp',
@@ -53,7 +54,8 @@ var whizzy = {
 	buildHandler: function() {
 		var self = this;
 		var html = '';
-		var peopleURL = "http://whizzy.thesecretlocation.net.s3-website-us-west-2.amazonaws.com/2015/asset/people/";
+		// var peopleURL = "http://whizzy.thesecretlocation.net.s3-website-us-west-2.amazonaws.com/2015/asset/people/";
+		var peopleURL = "asset/2015/people/";
 
 		html += '<section data-background="asset/mr_wizzy.png">';
 		html +=   '<img id="logo" src="asset/logo.png">';
